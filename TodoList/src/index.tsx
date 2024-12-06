@@ -1,19 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';  // Importer la fonction reportWebVitals
-import { getCLS, getFID, getLCP } from 'web-vitals';  // Importer les fonctions depuis 'web-vitals'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const rootElement = document.getElementById('root') as HTMLElement;
 
-// Utilisation des fonctions de 'web-vitals'
-getCLS(reportWebVitals);  // Calcul du CLS (Cumulative Layout Shift)
-getFID(reportWebVitals);  // Calcul du FID (First Input Delay)
-getLCP(reportWebVitals);  // Calcul du LCP (Largest Contentful Paint)
-
+if (rootElement) {
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+}
